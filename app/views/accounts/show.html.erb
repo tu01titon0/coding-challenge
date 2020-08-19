@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 align="center"> Account</h1>
+  <h3> Name: </h3>
+  <p><%= @account.name %>
+  <h3> Bank: </h3>
+  <p><%= @account.bank %>
+  <p><%= link_to 'Destroy', @account, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p><%= link_to 'Back', accounts_path %>
+
+</div>

@@ -1,0 +1,21 @@
+<%= form_with(model: @transaction, local: true) do |form| %>
+
+    <div class="form-group">
+      <%= form.label :amount %>
+      <%= form.text_field :amount, placeholder:"Amount", class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :account_id %>
+      <p><%= form.collection_select :account_id, Account.all, :id, :bank %>
+    </div>
+
+    <div class="field">
+      <%= form.label :transaction_type %>
+      <p><%= form.select :transaction_type, [["Deposit", 0], ["Expense", 1]] %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-primary btn-sm" %>
+    </div>
+  <% end %>

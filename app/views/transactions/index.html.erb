@@ -1,0 +1,33 @@
+<div class="container">
+  <%= link_to 'Create Transactionn', new_transaction_path , class:"btn btn-outline-dark" %>
+  <p>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Bank</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Type</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <% @transactions.each do |transaction| %>
+      <tbody>
+        <tr>
+          <th scope="row"><%= transaction.id %></th>
+          <td> <%=transaction.account.bank %></td>
+          <td> <%=transaction.amount %></td>
+          <td> <%=transaction.transaction_type == 0 ? "Deposit" : "Expense"%> </td>
+          <td>
+            <%= link_to 'Show', transaction %>
+            <%= link_to 'Edit', edit_transaction_path(transaction) %>
+            <%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+    <%= paginate @transactions %>
+
+
+ </div>

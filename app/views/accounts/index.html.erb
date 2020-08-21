@@ -7,6 +7,7 @@
         <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">Bank</th>
+        <th scope="col">Balance</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@
           <th scope="row"><%= account.id %></th>
           <td> <%=account.name %></td>
           <td> <%=account.bank %></td>
+          <td><%= balance_calc(account) %></td>
           <td> <p class="text-muted">
             <%= link_to 'Show', account %>
             <%= link_to 'Edit', edit_account_path(account) %>
@@ -25,4 +27,5 @@
       </tbody>
     <% end %>
   </table>
+  <%= paginate @accounts %>
  </div>

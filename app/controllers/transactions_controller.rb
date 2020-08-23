@@ -14,13 +14,20 @@ class TransactionsController < ApplicationController
   def create
     @transaction = current_user.transactions.new(transaction_params)
 
-    respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'transaction was successfully created.' }
+        redirect_to @transaction, notice: 'transaction was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
-    end
+
+    # respond_to do |format|
+    #   if @transaction.save
+    #     format.html { redirect_to @transaction, notice: 'transaction was successfully created.' }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json ....}
+    #   end
+    # end
   end
 
   def destroy
